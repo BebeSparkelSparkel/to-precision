@@ -175,6 +175,11 @@ class TestStdNotation(unittest.TestCase):
     # sig zero
     self.assertEqual(std_notation(10, 2), '10.')
 
+  def test_values_less_than_1(self):
+    # github.com/BebeSparkelSparkel/to-precision/issues/5
+    self.assertEqual(std_notation(0.999999, 3), '1.00')
+    self.assertEqual(std_notation(-0.999999, 3), '-1.00')
+
 class TestSciNotation(unittest.TestCase):
   def test_multi(self):
     self.assertEqual(sci_notation(1, 1), '1e0')
@@ -192,6 +197,11 @@ class TestSciNotation(unittest.TestCase):
 
     self.assertEqual(sci_notation(123, 3), '1.23e2')
     self.assertEqual(sci_notation(-123, 4), '-1.230e2')  # round down
+
+  def test_values_less_than_1(self):
+    # github.com/BebeSparkelSparkel/to-precision/issues/5
+    self.assertEqual(sci_notation(0.999999, 3), '1.00e0')
+    self.assertEqual(sci_notation(-0.999999, 3), '-1.00e0')
 
 class TestPlaceDot(unittest.TestCase):
   def test_all(self):

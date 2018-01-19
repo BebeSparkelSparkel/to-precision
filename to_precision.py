@@ -1,5 +1,8 @@
-__author__ = '''William Rusnack github.com/BebeSparkelSparkel linkedin.com/in/williamrusnack williamrusnack@gmail.com
-Eric Moyer github.com/epmoyer eric@lemoncrab.com'''
+__author__ = '''
+William Rusnack github.com/BebeSparkelSparkel linkedin.com/in/williamrusnack williamrusnack@gmail.com
+Eric Moyer github.com/epmoyer eric@lemoncrab.com
+Thomas Hladish https://github.com/tjhladish tjhladish@utexas.edu
+'''
 
 from math import floor, log10
 
@@ -263,22 +266,30 @@ def _number_profile(value, precision):
       github.com/BebeSparkelSparkel
       linkedin.com/in/williamrusnack/
       williamrusnack@gmail.com
+    contributions by Thomas Hladish
+      github.com/tjhladish
+      Issue: github.com/BebeSparkelSparkel/to-precision/issues/5
   '''
   value = float(value)
+  is_neg = value < 0
+  value = abs(value)
+
   if value == 0:
     sig_digits = '0' * precision
     power = -(1 - precision)
-    is_neg = False
 
   else:
-    if value < 0:
-      value = abs(value)
-      is_neg = True
-    else:
-      is_neg = False
-
     power = -1 * floor(log10(value)) + precision - 1
-    sig_digits = str(int(round(abs(value) * 10.0**power)))
+
+    # issue soved by Thomas Haladish
+    # github.com/BebeSparkelSparkel/to-precision/issues/5
+    value_power = value * 10.0**power
+    if value < 1 and \
+        floor(log10(int(round(value_power)))) > \
+        floor(log10(int(value_power))):
+      power -= 1
+
+    sig_digits = str(int(round(value * 10.0**power)))
 
   return sig_digits, int(-power), is_neg
 
