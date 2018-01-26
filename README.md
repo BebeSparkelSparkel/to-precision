@@ -12,9 +12,12 @@ Created by:
 **Randle Taylor**
 [GitHub](github.com/randlet)
 
+## Use Latest Release
+https://github.com/BebeSparkelSparkel/to-precision/releases/tag/0.0.0
+
 ## Install
 
-    pip install git+https://github.com/BebeSparkelSparkel/to-precision.git
+    pip install git+"link to latest release"
 
 ### standard notation
 to_precision.**std_notation**(value, precision)
