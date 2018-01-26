@@ -289,7 +289,7 @@ def _number_profile(value, precision):
         floor(log10(int(value_power))):
       power -= 1
 
-    sig_digits = str(int(round(value * 10.0**power)))
+    sig_digits = str(int(round(value * 10.0**power))) # cannot use value_power because power is changed
 
   return sig_digits, int(-power), is_neg
 
