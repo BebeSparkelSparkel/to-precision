@@ -1,6 +1,8 @@
 # to_precision
 Formatting floating point numbers to standard, scientific, or engineering notation with a specified number of significant digits.
 
+[![Build Status](https://travis-ci.org/BebeSparkelSparkel/to-precision.svg?branch=master)](https://travis-ci.org/BebeSparkelSparkel/to-precision)
+
 Created by:  
 **William Rusnack**
 [GitHub](github.com/BebeSparkelSparkel)
